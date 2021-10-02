@@ -25,7 +25,7 @@ import {
 } from "./TableActionAlert";
 import tableColumns from "./TableColumns";
 
-const UserTable = () => {
+const UserTable = (props) => {
   const [countData, setCountData] = useState(0);
   const [data, setDataList] = useState([]);
   const [preferDarkMode, setPreferDarkMode] = useState(() => {
@@ -67,7 +67,7 @@ const UserTable = () => {
     const ifError = () => {
       setCountData(0);
     };
-    HandleDataCountAPI(ifSuccess, ifError);
+    HandleDataCountAPI(props.userAuthInfo, ifSuccess, ifError);
   };
 
   const handleTableDataShow = () => {
@@ -79,7 +79,7 @@ const UserTable = () => {
     const ifError = () => {
       setError(true);
     };
-    HandleAllDataReadAPI(ifSuccess, ifError);
+    HandleAllDataReadAPI(props.userAuthInfo, ifSuccess, ifError);
   };
 
   const handleNewTableDataAdd = (addData) => {
@@ -93,7 +93,7 @@ const UserTable = () => {
       setError(true);
     };
 
-    HandleAddAPI(addData, ifSuccess, ifError);
+    HandleAddAPI(props.userAuthInfo, addData, ifSuccess, ifError);
   };
 
   const handleTableDataEdit = (updatedData) => {
@@ -107,7 +107,7 @@ const UserTable = () => {
       setError(true);
     };
 
-    HandleEditAPI(updatedData, ifSuccess, ifError);
+    HandleEditAPI(props.userAuthInfo, updatedData, ifSuccess, ifError);
   };
 
   const handleTableDataDelete = (user_id) => {
@@ -120,7 +120,7 @@ const UserTable = () => {
     const ifError = () => {
       setError(true);
     };
-    HandleDeleteAPI(`${user_id}`, ifSuccess, ifError);
+    HandleDeleteAPI(props.userAuthInfo, `${user_id}`, ifSuccess, ifError);
   };
 
 const HandlePasswordReset = (user_id) => {
@@ -133,7 +133,7 @@ const HandlePasswordReset = (user_id) => {
   const ifError = () => {
     setError(true);
   };
-  HandleResetPasswordAPI(`${user_id}`, ifSuccess, ifError);
+  HandleResetPasswordAPI(props.userAuthInfo, `${user_id}`, ifSuccess, ifError);
 };
 
   const isEmailValid = (email) => {

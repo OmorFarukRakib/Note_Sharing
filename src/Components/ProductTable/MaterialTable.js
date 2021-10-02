@@ -4,6 +4,7 @@ import { MuiThemeProvider } from "@material-ui/core";
 import { createTheme } from "@material-ui/core/styles";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
+import { EditModalForm, AddModalForm } from "./PopUpModalForm";
 
 import {
   HandleAllDataReadAPI,
@@ -22,7 +23,7 @@ import {
 } from "./TableActionAlert";
 import tableColumns from "./TableColumns";
 
-const ProductTable = () => {
+const ProductTable = (props) => {
   const [countData, setCountData] = useState(0);
   const [data, setDataList] = useState([]);
   const [preferDarkMode, setPreferDarkMode] = useState(() => {
@@ -37,6 +38,11 @@ const ProductTable = () => {
   const [lastUpdateId, setLastUpdateId] = useState(null);
   const [warningForAddRequiredData, setWarningForAddRequiredData] =
     useState(false);
+  const [editModalFormShow, SetEditModalFormShow] = useState(false);
+  const [rowDataForEdit, SetRowDataForEdit] = useState({});
+  const [addModalFormShow, SetAddModalFormShow] = useState(false);
+
+
 
   useEffect(() => {
     handlecountData();
@@ -62,7 +68,7 @@ const ProductTable = () => {
     const ifError = () => {
       setCountData(0);
     };
-    HandleDataCountAPI(ifSuccess, ifError);
+    HandleDataCountAPI(props.userAuthInfo, ifSuccess, ifError);
   };
 
   const handleTableDataShow = () => {
@@ -74,7 +80,7 @@ const ProductTable = () => {
     const ifError = () => {
       setError(true);
     };
-    HandleAllDataReadAPI(ifSuccess, ifError);
+    HandleAllDataReadAPI(props.userAuthInfo, ifSuccess, ifError);
   };
 
   const handleNewTableDataAdd = (name, ux_sales, ux_tech) => {
@@ -92,7 +98,7 @@ const ProductTable = () => {
       ux_sales,
       ux_tech,
     };
-    HandleAddAPI(addData, ifSuccess, ifError);
+    HandleAddAPI(props.userAuthInfo, addData, ifSuccess, ifError);
   };
 
   const handleTableDataEdit = (product_id, name, ux_sales, ux_tech) => {
@@ -112,7 +118,7 @@ const ProductTable = () => {
       ux_tech,
     };
 
-    HandleEditAPI(editData, ifSuccess, ifError);
+    HandleEditAPI(props.userAuthInfo, editData, ifSuccess, ifError);
   };
 
   const handleTableDataDelete = (product_id) => {
@@ -125,7 +131,7 @@ const ProductTable = () => {
     const ifError = () => {
       setError(true);
     };
-    HandleDeleteAPI(`${product_id}`, ifSuccess, ifError);
+    HandleDeleteAPI(props.userAuthInfo, `${product_id}`, ifSuccess, ifError);
   };
 
   const handleClearMessage = () => {
@@ -136,6 +142,10 @@ const ProductTable = () => {
     setAddSuccess(false);
     setLastUpdateId(null);
   };
+  const handleHideEditModal = () => {
+    SetEditModalFormShow(false);
+    SetRowDataForEdit({});
+  }
 
   return (
     <>
@@ -159,8 +169,17 @@ const ProductTable = () => {
         handleClearMessage={handleClearMessage}
         lastUpdateId={lastUpdateId}
       />
-
-      {tableLoading && <Loading tableLoading={tableLoading} />}
+      <EditModalForm
+        rowDataForEdit={rowDataForEdit}
+        show={editModalFormShow}
+        //onHide={() => SetEditModalFormShow(false)}
+        onHide={handleHideEditModal}
+      />
+      <AddModalForm
+        show={addModalFormShow}
+        onHide={() => SetAddModalFormShow(false)}
+      />
+      ;{tableLoading && <Loading tableLoading={tableLoading} />}
       {!tableLoading && (
         <MuiThemeProvider theme={theme}>
           <MaterialTable
@@ -198,38 +217,38 @@ const ProductTable = () => {
             //   },
             // ]}
             editable={{
-              onRowAdd: (newRow) =>
-                new Promise((res, rej) => {
-                  console.log(newRow);
-                  if (newRow.name && newRow.ux_sales && newRow.ux_tech) {
-                    handleNewTableDataAdd(
-                      newRow.name,
-                      newRow.ux_sales,
-                      newRow.ux_tech
-                    );
-                    res();
-                  } else {
-                    setWarningForAddRequiredData(true);
-                    rej();
-                  }
-                }),
+              // onRowAdd: (newRow) =>
+              //   new Promise((res, rej) => {
+              //     console.log(newRow);
+              //     if (newRow.name && newRow.ux_sales && newRow.ux_tech) {
+              //       handleNewTableDataAdd(
+              //         newRow.name,
+              //         newRow.ux_sales,
+              //         newRow.ux_tech
+              //       );
+              //       res();
+              //     } else {
+              //       setWarningForAddRequiredData(true);
+              //       rej();
+              //     }
+              //   }),
               onRowDelete: (selectedRow) =>
                 new Promise((res, rej) => {
                   console.log(selectedRow.product_id);
                   handleTableDataDelete(selectedRow.product_id);
                   res();
                 }),
-              onRowUpdate: (updatedRow, oldRow) =>
-                new Promise((res, rej) => {
-                  console.log(updatedRow);
-                  handleTableDataEdit(
-                    updatedRow.product_id,
-                    updatedRow.name,
-                    updatedRow.ux_sales,
-                    updatedRow.ux_tech
-                  );
-                  res();
-                }),
+              // onRowUpdate: (updatedRow, oldRow) =>
+              //   new Promise((res, rej) => {
+              //     console.log(updatedRow);
+              //     handleTableDataEdit(
+              //       updatedRow.product_id,
+              //       updatedRow.name,
+              //       updatedRow.ux_sales,
+              //       updatedRow.ux_tech
+              //     );
+              //     res();
+              //   }),
             }}
             options={{
               actionsColumnIndex: -1,
@@ -249,6 +268,46 @@ const ProductTable = () => {
               maxBodyHeight: "60vh",
             }}
             actions={[
+              {
+                icon: "add",
+                tooltip: "Add User",
+                isFreeAction: true,
+                onClick: (event) => {
+                  SetAddModalFormShow(true);
+                },
+              },
+              (rowData) => ({
+                icon: "edit",
+                tooltip: "Edit",
+                isFreeAction: true,
+                onClick: (event, rowData) => {
+                  SetRowDataForEdit(rowData);
+                  SetEditModalFormShow(true);
+                  console.log(rowData);
+                  //Do whatever you want with the row clicked data.
+                },
+              }),
+              // (rowData) => ({
+              //   icon: "add",
+              //   tooltip: "Add",
+              //   onClick: (event, rowData) => {
+              //     console.log(rowData);
+              //     //Do whatever you want with the row clicked data.
+              //   },
+              // }),
+              // {
+              //   icon: "edit",
+              //   onClick: (rowData) => {
+              //     console.log(rowData)
+              //   },
+              // },
+              //   {
+              //   icon: 'add',
+              //   isFreeAction: true,
+              //   onClick: () => {
+              //     console.log("ADDDD");
+              //   }
+              // },
               // {
               //   hidden: true,
               //   tooltip: "Remove All Selected Users",
@@ -267,6 +326,41 @@ const ProductTable = () => {
                 isFreeAction: true,
               },
             ]}
+            // components={{
+            //   Action: (props) => {
+            //     if (props.action.icon === "edit") {
+            //       return (
+            //         <Button
+            //           onClick={(event) =>
+            //             props.action.onClick(event, props.data)
+            //           }
+            //           color="primary"
+            //           variant="contained"
+            //           style={{ textTransform: "none" }}
+            //           size="small"
+            //           disabled
+            //         >
+            //           My Button
+            //         </Button>
+            //       );
+            //     }
+            //     // if (props.action.icon === "save") {
+            //     //   return (
+            //     //     <Button
+            //     //       onClick={(event) =>
+            //     //         props.action.onClick(event, props.data)
+            //     //       }
+            //     //       color="primary"
+            //     //       variant="contained"
+            //     //       style={{ textTransform: "none" }}
+            //     //       size="small"
+            //     //     >
+            //     //       My Button
+            //     //     </Button>
+            //     //   );
+            //     // }
+            //   },
+            // }}
           />
         </MuiThemeProvider>
       )}

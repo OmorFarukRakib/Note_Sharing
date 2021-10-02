@@ -7,3 +7,7 @@ export const jsonAPI = Axios.create({
 export const VIPNoteApi = Axios.create({
   baseURL: "http://bddev.ultra-x.jp/vipnoteApi",
 });
+
+export const JsonServer = Axios.create({
+  baseURL: "http://localhost:8000/",
+});

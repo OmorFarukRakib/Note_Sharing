@@ -5,6 +5,7 @@ const tableColumns = [
     title: "User ID",
     field: "user_id",
     editable: "never",
+    defaultSort: "desc",
     cellStyle: {
       width: "10%",
       textAlign: "center",

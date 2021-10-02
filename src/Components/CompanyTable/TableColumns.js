@@ -4,6 +4,7 @@ const tableColumns = [
   {
     title: "Company ID",
     field: "company_id",
+    defaultSort: "desc",
     editable: "never",
     cellStyle: {
       width: "10%",
@@ -107,6 +108,5 @@ const tableColumns = [
     ),
     //lookup: { 1: "İstanbul", 2: "Şanlıurfa" },
   },
-  
 ];
 export default tableColumns;

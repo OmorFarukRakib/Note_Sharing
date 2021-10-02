@@ -1,14 +1,16 @@
 import { VIPNoteApi } from "../../APIs/API";
 
-export const HandleDeleteAPI = (event_id, ifSuccess, ifError) => {
+export const HandleDeleteAPI = (userAuthInfo, event_id, ifSuccess, ifError) => {
   console.log(`ata delete koro ${event_id}`);
   VIPNoteApi({
     method: "post",
     url: `/remove_event`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       event_id: `${event_id}`,
     },
   })
@@ -25,14 +27,16 @@ export const HandleDeleteAPI = (event_id, ifSuccess, ifError) => {
       ifError();
     });
 };
-export const HandleEditAPI = (editData, ifSuccess, ifError) => {
+export const HandleEditAPI = (userAuthInfo, editData, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/update_event`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       event_id: `${editData.event_id}`,
       name: `${editData.name}`,
       info: `${editData.info}`,
@@ -56,14 +60,16 @@ export const HandleEditAPI = (editData, ifSuccess, ifError) => {
     });
 };
 
-export const HandleAddAPI = (addData, ifSuccess, ifError) => {
+export const HandleAddAPI = (userAuthInfo, addData, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/new_event`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       name: `${addData.name}`,
       info: `${addData.info}`,
       company_list: `${addData.company_list}`,
@@ -86,13 +92,15 @@ export const HandleAddAPI = (addData, ifSuccess, ifError) => {
     });
 };
 
-export const HandleAllDataReadAPI = (ifSuccess, ifError) => {
+export const HandleAllDataReadAPI = (userAuthInfo, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/get_event`,
     data: {
-      username: `rakib`,
-      token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
       // title: `${title}`,
       //body: `${body}`,
     },
@@ -109,13 +117,15 @@ export const HandleAllDataReadAPI = (ifSuccess, ifError) => {
     });
 };
 
-export const HandleDataCountAPI = (ifSuccess, ifError) => {
+export const HandleDataCountAPI = (userAuthInfo, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/count_event`,
     data: {
-      username: `rakib`,
-      token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
     },
   })
     .then((res) => {

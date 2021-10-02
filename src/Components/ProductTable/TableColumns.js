@@ -4,6 +4,7 @@ const tableColumns = [
   {
     title: "Product ID",
     field: "product_id",
+    defaultSort: "desc",
     editable: "never",
     cellStyle: {
       width: "20%",

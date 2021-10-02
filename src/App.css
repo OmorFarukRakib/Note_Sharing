@@ -1,0 +1,215 @@
+Form{
+	/*background-color:#4c4d4f;
+	size:200px;
+	color:white;
+	padding: 80px;
+  //margin-top:130px;
+  //margin-left: 800px;
+  //margin-right:800px;
+  margin:200px;
+  border-radius:10px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);*/
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 700px;
+  width: 30%;
+  height: 70%;
+  margin: 110px auto;
+  color:white;
+  background-color: #4c4d4f;
+  border-radius: 25px;
+  padding:50px;
+}
+.logintitle{
+	text-align: center;
+}
+.mb-3{
+	font-size:30px;
+}
+.mb-2{
+	font-size:20px;
+}
+
+Navbar{
+	width:40px;
+	margin:200px;
+}
+.loginButton{
+	/*margin-top:20px;
+	margin-left:150px;
+	text-align:center;
+	height:60px;
+	width:120px;
+	font-size: 25px;*/
+	max-width: 200px;
+  min-width: 100px;
+  max-height: 150px;
+  width: 50%;
+  height: 70%;
+  margin: 50px auto;
+  padding:10px;
+  margin-left: 100px;
+  font-size: 25px;
+}
+.formtext{
+	height: 50px;
+	font-size:20px;
+	
+}
+.logoutButton{
+	font-size:20px;
+}
+.or{
+	text-align: center;
+}
+.modalButton{
+	text-align: center;
+	margin-left: 860px;
+	height:40px;
+	width:300px;
+}
+.modalTitle{
+	text-align: center;
+	margin-left: 100px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.App {      
+  text-align: center;      
+}  
+.nav-item{
+  font-size: 40px;
+  padding:15px;
+
+}
+.nav-logout{
+	font-size: 30px;
+	padding:10px;
+	text-align: right;
+	margin-left: 1600px;
+}    
+.navheader{            
+  color :white;      
+  background-color:#11142e;     
+}
+
+/* body{
+	background-color:white;
+	overflow-x:hidden;
+	overflow-y:hidden;
+} */
+
+/* .footer{
+	margin-top:90px;
+	padding:15px;
+	text-align: center;
+	background-color: #11142e;
+	text-align: bottom;
+} */
+
+.sidebar1{
+	float: left;
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+  padding: 20px;
+}
+.bodyBox{
+	margin-top:100px;
+	margin-left: 150px;
+	float: left;
+  width: 800px;
+  height: 600px;
+  background: #ccc;
+  padding: 20px;
+}
+.img{
+	width:100%;
+	height: 300px;
+	background-color:#aaaaad;
+}
+.img1{
+	margin-top: 30px;
+	width:200px;
+	margin-left: 130px;
+}
+.profileButton{
+	margin-left: 120px;
+	width:250px;
+	height: 60px;
+	font-size: 25px;
+}
+.profilelist{
+	color:blue;
+}
+.profilelist1{
+	padding:15px;
+}
+.cpButton{
+	margin-left: 120px;
+	width:250px;
+	height: 60px;
+	font-size: 25px;
+
+}
+.userInfo{
+	margin-top: 10px;
+	text-align: center;
+	font-size: 40px;
+	height: 60px;
+	width:450px;
+	background-color: #aaaaad;
+}
+.userInfoList{
+	text-align: left;
+	font-size: 20px;
+	font-weight: bold;
+}
+.boxButton{
+	margin-top:100px;
+	margin-left: 120px;
+	width:200px;
+	height: 80px;
+	text-align: center;
+	font-size: 40px;
+
+}
+.modal-header{
+	background-color: #c8c9cc;
+}
+.modal-title{
+	text-align: center;
+	margin-left: 200px;
+	font-size: 30px;
+	font-weight: bold;
+}
+.modal-label{
+	font-size:25px;
+	font-weight: bold;
+}
+.modal-text{
+	height: 50px;
+	font-size:20px;
+	font-weight: bold;
+}
+.modal-button{
+	height:60px;
+	font-size:25px;
+
+}
+.extra1{
+	height:20px;
+}
+.extra2{
+	height:30px;
+}
+.extra3{
+	height:40px;
+}
+

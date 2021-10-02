@@ -1,35 +1,29 @@
 import { TextField } from "@material-ui/core";
-import MultipleSelect from "./MultiSelect";
 
 const setTableColumns = (
   lookupobjectForProduct,
   lookupobjectForEvent,
   lookupobjectForCompany
 ) => {
-    //const classes = useStyles();
-    //const theme = useTheme();
-    //const [personName, setPersonName] = useState([]);
-
-    
   // console.log(lookupobject);
   // let lookup = JSON.stringify(lookupobject);
   // console.log(lookup);
   return [
-    {
-      title: "Note ID",
-      field: "note_id",
-      editable: "never",
-      defaultSort: "desc",
-      cellStyle: {
-        width: "5%",
-        textAlign: "center",
-      },
-      headerStyle: {
-        textAlign: "center",
+    // {
+    //   title: "Note ID",
+    //   field: "note_id",
+    //   editable: "never",
+    //   defaultSort: "desc",
+    //   cellStyle: {
+    //     width: "5%",
+    //     textAlign: "center",
+    //   },
+    //   headerStyle: {
+    //     textAlign: "center",
 
-        //  backgroundColor: "#039be5",
-      },
-    },
+    //     //  backgroundColor: "#039be5",
+    //   },
+    // },
     // {
     //   title: "Created By",
     //   field: "user_fullname",
@@ -141,14 +135,14 @@ const setTableColumns = (
         // backgroundColor: "#039be5",
         textAlign: "center",
       },
-      editComponent: ({ value, onChange }) => {
-          console.log(value);
-          console.log(onChange);
-          return(<>
-      
-      <MultipleSelect value={value} onChange={onChange}/>
-      </>
-      )}
+      // editComponent: ({ value, onChange }) => (
+      //   <TextField
+      //     onChange={(e) => onChange(e.target.value)}
+      //     value={value}
+      //     multiline
+      //     fullWidth
+      //   />
+      // ),
       //lookup: { 1: "İstanbul", 2: "Şanlıurfa" },
     },
     {

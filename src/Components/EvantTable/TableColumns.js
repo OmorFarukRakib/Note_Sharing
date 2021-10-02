@@ -4,6 +4,7 @@ const tableColumns = [
   {
     title: "Event ID",
     field: "event_id",
+    defaultSort: "desc",
     editable: "never",
     cellStyle: {
       width: "10%",
@@ -111,7 +112,7 @@ const tableColumns = [
     title: "Started At",
     field: "startedAt",
     type: "datetime",
-  //  filterComponent: (props) => <CustomDatePicker {...props} />,
+    //  filterComponent: (props) => <CustomDatePicker {...props} />,
     cellStyle: {
       width: "10%",
       textAlign: "center",

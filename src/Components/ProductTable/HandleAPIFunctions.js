@@ -1,14 +1,16 @@
 import { VIPNoteApi } from "../../APIs/API";
 
-export const HandleDeleteAPI = (product_id, ifSuccess, ifError) => {
+export const HandleDeleteAPI = (userAuthInfo, product_id, ifSuccess, ifError) => {
   console.log(`ata delete koro ${product_id}`);
   VIPNoteApi({
     method: "post",
     url: `/remove_product`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       product_id: `${product_id}`,
     },
   })
@@ -25,14 +27,16 @@ export const HandleDeleteAPI = (product_id, ifSuccess, ifError) => {
       ifError();
     });
 };
-export const HandleEditAPI = (editData, ifSuccess, ifError) => {
+export const HandleEditAPI = (userAuthInfo, editData, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/update_product`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       product_id: `${editData.product_id}`,
       name: `${editData.name}`,
       ux_sales: `${editData.ux_sales}`,
@@ -52,14 +56,16 @@ export const HandleEditAPI = (editData, ifSuccess, ifError) => {
     });
 };
 
-export const HandleAddAPI = (addData, ifSuccess, ifError) => {
+export const HandleAddAPI = (userAuthInfo, addData, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/new_product`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       name: `${addData.name}`,
       ux_sales: `${addData.ux_sales}`,
       ux_tech: `${addData.ux_tech}`,
@@ -78,13 +84,15 @@ export const HandleAddAPI = (addData, ifSuccess, ifError) => {
     });
 };
 
-export const HandleAllDataReadAPI = (ifSuccess, ifError) => {
+export const HandleAllDataReadAPI = (userAuthInfo, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/get_product`,
     data: {
-      username: `rakib`,
-      token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
       // title: `${title}`,
       //body: `${body}`,
     },
@@ -101,13 +109,15 @@ export const HandleAllDataReadAPI = (ifSuccess, ifError) => {
     });
 };
 
-export const HandleDataCountAPI = (ifSuccess, ifError) => {
+export const HandleDataCountAPI = (userAuthInfo, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/count_product`,
     data: {
-      username: `rakib`,
-      token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
     },
   })
     .then((res) => {

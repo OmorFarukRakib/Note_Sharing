@@ -22,7 +22,7 @@ import {
 } from "./TableActionAlert";
 import tableColumns from "./TableColumns";
 
-const EventTable = () => {
+const EventTable = (props) => {
   const [countData, setCountData] = useState(0);
   const [data, setDataList] = useState([]);
   const [preferDarkMode, setPreferDarkMode] = useState(() => {
@@ -62,7 +62,7 @@ const EventTable = () => {
     const ifError = () => {
       setCountData(0);
     };
-    HandleDataCountAPI(ifSuccess, ifError);
+    HandleDataCountAPI(props.userAuthInfo, ifSuccess, ifError);
   };
 
   const handleTableDataShow = () => {
@@ -74,7 +74,7 @@ const EventTable = () => {
     const ifError = () => {
       setError(true);
     };
-    HandleAllDataReadAPI(ifSuccess, ifError);
+    HandleAllDataReadAPI(props.userAuthInfo, ifSuccess, ifError);
   };
 
   const handleNewTableDataAdd = (addData) => {
@@ -88,7 +88,7 @@ const EventTable = () => {
       setError(true);
     };
 
-    HandleAddAPI(addData, ifSuccess, ifError);
+    HandleAddAPI(props.userAuthInfo, addData, ifSuccess, ifError);
   };
 
   const handleTableDataEdit = (updatedData) => {
@@ -103,7 +103,7 @@ const EventTable = () => {
     };
     
 
-    HandleEditAPI(updatedData, ifSuccess, ifError);
+    HandleEditAPI(props.userAuthInfo, updatedData, ifSuccess, ifError);
   };
 
   const handleTableDataDelete = (event_id) => {
@@ -116,7 +116,7 @@ const EventTable = () => {
     const ifError = () => {
       setError(true);
     };
-    HandleDeleteAPI(`${event_id}`, ifSuccess, ifError);
+    HandleDeleteAPI(props.userAuthInfo, `${event_id}`, ifSuccess, ifError);
   };
 
   const handleClearMessage = () => {

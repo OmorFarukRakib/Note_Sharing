@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core";
 import "./customStyle.css";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       <div className="title">VIPNote</div>
@@ -9,6 +9,7 @@ const Header = () => {
         <Button
           variant="contained"
           color="red"
+          onClick={props.isLoggedOut}
           style={{
             maxHeight: "4vh",
             width: "4rem",
@@ -20,7 +21,7 @@ const Header = () => {
             borderRadius: "8px",
           }}
         >
-          <p>Logout</p>
+          <p style={{ marginBottom: "0px" }}>Logout</p>
         </Button>
       </div>
     </>

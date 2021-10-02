@@ -1,0 +1,104 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.logo-background {
+  width: 100%;
+  height: 100vh;
+  background-color: #B61924;
+}
+
+#ultra-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fill 0.5s ease forwards 3.5s;
+}
+
+#ultra-logo path:nth-child(1) {
+  stroke-dasharray: 483.892;
+  stroke-dashoffset: 483.892;
+  animation: line-anim 1.5s ease forwards 0.3s;
+}
+
+#ultra-logo path:nth-child(2) {
+  stroke-dasharray: 239.328;
+  stroke-dashoffset: 239.328;
+  animation: line-anim 1.5s ease forwards 0.6s;
+}
+
+#ultra-logo path:nth-child(3) {
+  stroke-dasharray: 314.949;
+  stroke-dashoffset: 314.949;
+  animation: line-anim 1.5s ease forwards 0.9s;
+}
+
+#ultra-logo path:nth-child(4) {
+  stroke-dasharray: 246.024;
+  stroke-dashoffset: 246.024;
+  animation: line-anim 1.5s ease forwards 1.2s;
+}
+
+#ultra-logo path:nth-child(5) {
+  stroke-dasharray: 506.445;
+  stroke-dashoffset: 506.445;
+  animation: line-anim 1.5s ease forwards 1.5s;
+}
+
+#ultra-logo path:nth-child(6) {
+  stroke-dasharray: 137.087;
+  stroke-dashoffset: 137.087;
+  animation: line-anim 1.5s ease forwards 1.8s;
+}
+
+#ultra-logo path:nth-child(7) {
+  stroke-dasharray: 477.369;
+  stroke-dashoffset: 477.369;
+  animation: line-anim 1.5s ease forwards 2.1s;
+}
+
+@keyframes line-anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: white;
+  }
+}
+
+.logo-sub-name {
+  position: absolute;
+
+  /* top: 60%; */
+  left: 50%;
+  transform: translate(-50%);
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 96px;
+  line-height: 144px;
+
+  color: #ffffff;
+  animation: line-up 2.5s ease forwards;
+}
+/* Asia Pacific */
+
+@keyframes line-up {
+  from {
+    top: 80%;
+  }
+  to {
+    top: 60%;
+
+    /* transform: translate(-50%); */
+  }
+}

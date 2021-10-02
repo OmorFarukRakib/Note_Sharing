@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MultiSelect from "./MultiSelect";
 import MaterialTable, {
   MTableBodyRow,
   MTableEditRow,
@@ -31,7 +30,7 @@ import {
   Loading,
 } from "./TableActionAlert";
 
-import setTableColumns from "./TableColumns";
+import setTableColumns from "./TableColumns_BKKKKK";
 
 const VIPNoteTable = (props) => {
   console.log(props.userAuthInfo);
@@ -226,15 +225,15 @@ const VIPNoteTable = (props) => {
     setLastUpdateId(null);
   };
   //MUST BE DELTES
-  // const handleRowHover = (event, propsData) => {
-  //   console.log(event.target);
-  //   console.log(propsData);
-  //   return (
-  //     <Tooltip title="Show Details">
-  //       Hello<span>{propsData}</span>
-  //     </Tooltip>
-  //   );
-  // };
+  const handleRowHover = (event, propsData) => {
+    console.log(event.target);
+    console.log(propsData);
+    return (
+      <Tooltip title="Show Details">
+        Hello<span>{propsData}</span>
+      </Tooltip>
+    );
+  };
 
   return (
     <>
@@ -263,6 +262,7 @@ const VIPNoteTable = (props) => {
       {!tableLoading && (
         <MuiThemeProvider theme={theme}>
           <MaterialTable
+            
             title={
               <h4 style={{ fontSize: "1.2rem" }}>Total Entries: {countData}</h4>
             }
@@ -324,8 +324,7 @@ const VIPNoteTable = (props) => {
               //   } = fieldProps;
               //   if (lookup) {
               //     console.info(fieldProps);
-              //     return <MultiSelect {...fieldProps} />;
-              //     return null;
+              //     return <Autocomplete {...fieldProps} />;
               //   } else {
               //     return (
               //       <MTableEditField
@@ -339,7 +338,7 @@ const VIPNoteTable = (props) => {
                 return (
                   <MTableBodyRow
                     {...props}
-                    // onMouseEnter={(e) => handleRowHover(e, props)}
+                    onMouseEnter={(e) => handleRowHover(e, props)}
                     // onMouseEnter={render: rowData => <img src={rowData.url} style={{width: 50, borderRadius: '50%'}}/>}
                   />
                 );

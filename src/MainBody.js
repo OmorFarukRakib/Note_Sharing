@@ -6,7 +6,9 @@ import ProductTable from "./Components/ProductTable/MaterialTable";
 import EventTable from "./Components/EvantTable/MaterialTable";
 import CompanyTable from "./Components/CompanyTable/MaterialTable";
 import UserTable from "./Components/UserTable/MaterialTable";
-const MainBody = () => {
+import Profile from "./Profile";
+const MainBody = (props) => {
+  console.log(props.userAuthInfo);
   const [selectTable, setSelectTable] = useState(1);
   const onNoteButtonClick = () => {
     setSelectTable(1);
@@ -25,7 +27,9 @@ const MainBody = () => {
   };
   return (
     <>
-      <div className="profile-wrapper">dfg</div>
+      <div className="profile-wrapper">
+        <Profile userAuthInfo={props.userAuthInfo} />
+      </div>
       <div className="content-wrapper">
         <div className="content-nav-btn-wrapper">
           <Button
@@ -64,22 +68,32 @@ const MainBody = () => {
           >
             Company List
           </Button>
-          <Button
-            variant="contained"
-            color={selectTable === 5 ? "#202124" : "secondary"}
-            //style={{ height: `${modalSelect === 1}  ? "10rem" : null}` }}
-            className={selectTable === 5 && "custom-btn"}
-            onClick={onUserButtonClick}
-          >
-            User List
-          </Button>
+          {props.userAuthInfo.userLevel === 1 ? (
+            <Button
+              variant="contained"
+              color={selectTable === 5 ? "#202124" : "secondary"}
+              //style={{ height: `${modalSelect === 1}  ? "10rem" : null}` }}
+              className={selectTable === 5 && "custom-btn"}
+              onClick={onUserButtonClick}
+            >
+              User List
+            </Button>
+          ) : null}
         </div>
         <div className="content-table-wrapper">
-          {selectTable === 1 && <VIPNoteTable />}
-          {selectTable === 2 && <ProductTable />}
-          {selectTable === 3 && <EventTable />}
-          {selectTable === 4 && <CompanyTable />}
-          {selectTable === 5 && <UserTable />}
+          {selectTable === 1 && (
+            <VIPNoteTable userAuthInfo={props.userAuthInfo} />
+          )}
+          {selectTable === 2 && (
+            <ProductTable userAuthInfo={props.userAuthInfo} />
+          )}
+          {selectTable === 3 && (
+            <EventTable userAuthInfo={props.userAuthInfo} />
+          )}
+          {selectTable === 4 && (
+            <CompanyTable userAuthInfo={props.userAuthInfo} />
+          )}
+          {selectTable === 5 && <UserTable userAuthInfo={props.userAuthInfo} />}
         </div>
       </div>
     </>

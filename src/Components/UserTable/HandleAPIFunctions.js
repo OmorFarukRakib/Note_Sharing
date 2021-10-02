@@ -1,14 +1,16 @@
 import { VIPNoteApi } from "../../APIs/API";
 
-export const HandleDeleteAPI = (user_id, ifSuccess, ifError) => {
+export const HandleDeleteAPI = (userAuthInfo, user_id, ifSuccess, ifError) => {
   console.log(`ata delete koro ${user_id}`);
   VIPNoteApi({
     method: "post",
     url: `/remove_user`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       user_id: `${user_id}`,
     },
   })
@@ -25,14 +27,16 @@ export const HandleDeleteAPI = (user_id, ifSuccess, ifError) => {
       ifError();
     });
 };
-export const HandleEditAPI = (editData, ifSuccess, ifError) => {
+export const HandleEditAPI = (userAuthInfo, editData, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/update_user`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       user_id: `${editData.user_id}`,
       //newusername: `${editData.username}`,
       user_level: `${editData.user_level}`,
@@ -57,14 +61,16 @@ export const HandleEditAPI = (editData, ifSuccess, ifError) => {
     });
 };
 
-export const HandleAddAPI = (addData, ifSuccess, ifError) => {
+export const HandleAddAPI = (userAuthInfo, addData, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/new_user`,
     data: {
-      username: `rakib`,
-      token:
-        "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token:
+      //   "V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h",
       newusername: `${addData.name}`,
       user_level: `${addData.user_level}`,
       fullname: `${addData.fullname}`,
@@ -85,13 +91,15 @@ export const HandleAddAPI = (addData, ifSuccess, ifError) => {
     });
 };
 
-export const HandleAllDataReadAPI = (ifSuccess, ifError) => {
+export const HandleAllDataReadAPI = (userAuthInfo, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/get_user`,
     data: {
-      username: `rakib`,
-      token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
       // title: `${title}`,
       //body: `${body}`,
     },
@@ -108,13 +116,15 @@ export const HandleAllDataReadAPI = (ifSuccess, ifError) => {
     });
 };
 
-export const HandleDataCountAPI = (ifSuccess, ifError) => {
+export const HandleDataCountAPI = (userAuthInfo, ifSuccess, ifError) => {
   VIPNoteApi({
     method: "post",
     url: `/count_user`,
     data: {
-      username: `rakib`,
-      token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
     },
   })
     .then((res) => {
@@ -130,13 +140,20 @@ export const HandleDataCountAPI = (ifSuccess, ifError) => {
     });
 };
 
-export const HandleResetPasswordAPI = (user_id, ifSuccess, ifError) => {
+export const HandleResetPasswordAPI = (
+  userAuthInfo,
+  user_id,
+  ifSuccess,
+  ifError
+) => {
   VIPNoteApi({
     method: "post",
     url: `/reset_password`,
     data: {
-      username: `rakib`,
-      token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
+      username: `${userAuthInfo.userName}`,
+      token: `${userAuthInfo.token}`,
+      // username: `rakib`,
+      // token: `V2e78jybobgQ3HRKS1KyODcekDnT2dnj3dGCkr95iaG6j7j7sKkVloCvTWKn0bLc6eyHSuS0GGjYAdtTohYGOnxmnKZz9UexDztyFHPNIflbQsIQJdtXjqSJoXuGwK9h`,
       user_id: `${user_id}`,
     },
   })
