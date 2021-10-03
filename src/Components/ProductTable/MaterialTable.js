@@ -171,11 +171,13 @@ const ProductTable = (props) => {
       />
       <EditModalForm
         rowDataForEdit={rowDataForEdit}
+        handleTableDataEdit={handleTableDataEdit}
         show={editModalFormShow}
         //onHide={() => SetEditModalFormShow(false)}
         onHide={handleHideEditModal}
       />
       <AddModalForm
+        handleNewTableDataAdd={handleNewTableDataAdd}
         show={addModalFormShow}
         onHide={() => SetAddModalFormShow(false)}
       />
